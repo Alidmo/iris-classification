@@ -1,47 +1,6 @@
+# Iris Flower Classification
 
----
-
-## `house-price-prediction/README.md`
-
-```markdown
-# House Price Prediction
-
-A reproducible, test‑driven pipeline for predicting California house prices using linear regression.
-
-## Table of Contents
-
-1. [Project Overview](#project-overview)  
-2. [Getting Started](#getting-started)  
-3. [Project Structure](#project-structure)  
-4. [Usage](#usage)  
-5. [Testing](#testing)  
-6. [Notebook Walk‑Through](#notebook-walk‑through)  
-7. [Advanced Ideas](#advanced-ideas)  
-8. [License](#license)
-
----
-
-### Project Overview
-
-- **Goal**: Predict the median house value (`MedHouseVal`) from features such as  
-  - `MedInc` (median income)  
-  - `HouseAge`  
-  - `AveRooms`, `AveBedrms`  
-  - `Population`, `AveOccup`  
-  - `Latitude`, `Longitude`  
-- **Dataset**: California Housing Prices (∼20 000 samples).  
-- **Techniques**:  
-  - Data ingestion via `fetch_california_housing`  
-  - Exploratory Data Analysis (correlation heatmap)  
-  - Train/test split  
-  - Feature scaling (`StandardScaler`)  
-  - Linear Regression in a `Pipeline`  
-  - Regression metrics (MSE, RMSE, R²)  
-- **Development Style**:  
-  - **Domain‑Driven Design**: clear modules in `src/`  
-  - **Test‑Driven Development**: pytest tests in `tests/`
-
----
+A simple, test‑driven Python package and Jupyter Notebook to classify Iris flowers into three species using logistic regression.
 
 ### Getting Started
 
@@ -65,5 +24,3 @@ A reproducible, test‑driven pipeline for predicting California house prices us
 
 5. **lunch and follow notebook**
     ``bash
-    
-
