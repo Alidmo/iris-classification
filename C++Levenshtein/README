@@ -1,0 +1,85 @@
+# C++ Finite‑State Fuzzy String Matching
+
+A C++ library and sample application demonstrating:
+
+- **Levenshtein distance** via classic dynamic‑programming (DP).
+- **Levenshtein automaton** (DFA) for streaming approximate matching (edit‑distance ≤ k).
+- **Trie** data structure for dictionary storage and fuzzy lookup.
+- **Benchmark** comparing DP vs. automaton+trie performance.
+
+## Features
+
+- `levenshtein_distance(a,b)`  
+  O(n·m) time, O(min(n,m)) space rolling‑array implementation.
+
+- `LevenshteinAutomaton(pattern,k)`  
+  Builds a DFA in O(|pattern|·k·26) states/transitions, then `matches(text)` in O(|text|).
+
+- `Trie`  
+  Fixed‑width 26‑way lowercase‐ASCII children, fast insert and recursive word collection.
+
+- `fuzzy_lookup(trie,pattern,k)`  
+  Returns all dictionary words within edit distance k.
+
+- **Unit Tests** (Google Test) for distance, automaton, and fuzzy lookup.
+
+- **Benchmark.exe**  
+  Loads a large dictionary, builds trie, then times DP vs automaton scans.
+
+## Repository Structure
+├── CMakeLists.txt # Top‑level CMake project file
+├── CMakeSettings.json # VS CMake configurations
+├── dictionary.txt # [Large word list]*
+├── include/
+│ ├── levenshtein.h
+│ └── trie.h
+├── src/
+│ ├── levenshtein.cpp
+│ ├── trie.cpp
+│ └── benchmark.cpp
+├── tests/
+│ ├── CMakeLists.txt # Test targets
+│ └── test_trie_levenshtein.cpp
+└── .gitignore
+
+
+## Getting Started
+
+### Prerequisites
+
+- CMake ≥ 3.14  
+- A C++17 compiler (MSVC, Clang, or GCC)  
+- (Optional) [vcpkg](https://github.com/microsoft/vcpkg) for Google Test
+
+### Build & Test
+
+```bash
+git clone <repo-url>
+cd C++Levenshtein
+
+# 1) Configure & build
+cmake -B out/build -S .
+cmake --build out/build --config RelWithDebInfo
+
+# 2) Run unit tests
+cmake --build out/build --config RelWithDebInfo --target RUN_TESTS
+
+# 3) (Or via CTest)
+cd out/build
+ctest --output-on-failure
+
+Benchmark
+Ensure dictionary.txt is in the project root. Then:
+
+# Build benchmark
+cmake --build out/build --config RelWithDebInfo --target benchmark
+
+# Run it
+./out/build/RelWithDebInfo/benchmark.exe
+You’ll see timings for DP vs automaton scans and a summary.
+
+License
+This code is released under the MIT License.
+
+
+
